@@ -57,10 +57,10 @@ function with_venv {
 
 function install_venv {
     virtualenv $venv $@ || exit 1
-    with_venv pip install pep8 pylint pyflakes vulture nose mox coverage
+    with_venv pip install -r requirements.txt
+    with_venv pip install -r test-requirements.txt
+    # TODO(aloga): move this to test requirements
     with_venv pip install http://sourceforge.net/projects/pychecker/files/pychecker/0.8.19/pychecker-0.8.19.tar.gz/download
-    
-    with_venv pip install occi
 }
 
 function run_pep8 {

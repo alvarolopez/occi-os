@@ -1,0 +1,12 @@
+hacking>=0.9.2,<0.10
+
+coverage>=3.6
+discover
+testrepository>=0.0.18
+testtools>=0.9.34
+
+nose
+
+mox
+
+-e git+http://github.com/openstack/nova/@stable/icehouse#egg=nova
