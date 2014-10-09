@@ -20,7 +20,6 @@ Unittest for the Compute Backend.
 #pylint: disable=W0102,C0103,R0904
 
 import mox
-import unittest
 
 # dependency from nova :-)
 
@@ -32,9 +31,9 @@ from occi.extensions import infrastructure
 from occi_os_api import nova_glue
 from occi_os_api.backends import compute
 from occi_os_api.extensions import os_mixins
+from occi_os_api import test
 
-
-class TestComputeBackend(unittest.TestCase):
+class TestComputeBackend(test.TestCase):
     """
     Tests the compute backend.
     """
@@ -49,15 +48,9 @@ class TestComputeBackend(unittest.TestCase):
         """
         Setup tests.
         """
+        super(TestComputeBackend, self).setUp()
         self.backend = compute.ComputeBackend()
         self.sec_obj = {'nova_ctx': None}
-        self.mox = mox.Mox()
-
-    def tearDown(self):
-        """
-        Cleanup mocks.
-        """
-        self.mox.UnsetStubs()
 
     # Test for failure
 

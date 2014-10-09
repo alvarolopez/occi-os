@@ -25,6 +25,7 @@ OCCI WSGI app :-)
 
 from oslo.config import cfg
 
+from nova import rpc
 from nova import wsgi
 from nova.openstack.common import log
 
@@ -59,6 +60,8 @@ OCCI_OPTS = [
 
 CONF = cfg.CONF
 CONF.register_opts(OCCI_OPTS)
+
+rpc.init(CONF)
 
 MIXIN_BACKEND = backend.MixinBackend()
 

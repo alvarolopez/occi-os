@@ -23,15 +23,15 @@ Test network resource backend.
 #pylint: disable=W0102,C0103,R0904
 
 import mox
-import unittest
 from occi import core_model
 
 from occi_os_api import nova_glue
 from occi_os_api.backends import network
 from occi_os_api.extensions import os_addon
+from occi_os_api import test
 
 
-class TestNetworkInterfaceBackend(unittest.TestCase):
+class TestNetworkInterfaceBackend(test.TestCase):
     """
     Tests the network interface backend!
     """
@@ -40,15 +40,9 @@ class TestNetworkInterfaceBackend(unittest.TestCase):
         """
         Setup the tests.
         """
+        super(TestNetworkInterfaceBackend, self).setUp()
         self.backend = network.NetworkInterfaceBackend()
         self.sec_obj = {'nova_ctx': None}
-        self.mox = mox.Mox()
-
-    def tearDown(self):
-        """
-        Cleanup mocks.
-        """
-        self.mox.UnsetStubs()
 
     # Test for failure
 
@@ -157,7 +151,7 @@ class TestNetworkInterfaceBackend(unittest.TestCase):
         self.mox.VerifyAll()
 
 
-class TestNetworkBackend(unittest.TestCase):
+class TestNetworkBackend(test.TestCase):
     """
     Some tests for network resources.
     """
@@ -166,6 +160,7 @@ class TestNetworkBackend(unittest.TestCase):
         """
         Initialize test.
         """
+        super(TestNetworkBackend, self).setUp()
         self.backend = network.NetworkBackend()
 
     def test_create_for_failure(self):
@@ -182,7 +177,7 @@ class TestNetworkBackend(unittest.TestCase):
                           None, None, None)
 
 
-class TestIpNetworkBackend(unittest.TestCase):
+class TestIpNetworkBackend(test.TestCase):
     """
     Some tests for network resources.
     """
@@ -191,6 +186,7 @@ class TestIpNetworkBackend(unittest.TestCase):
         """
         Initialize test.
         """
+        super(TestIpNetworkBackend, self).setUp()
         self.backend = network.IpNetworkBackend()
 
     def test_create_for_failure(self):

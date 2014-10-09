@@ -37,6 +37,12 @@ which point to this function call (<module name>:function).
 # W0613:unused args
 # pylint: disable=W0613
 
+from nova import rpc
+from oslo.config import cfg
+
+CONF = cfg.CONF
+rpc.init(CONF)
+
 from occi_os_api import wsgi
 
 

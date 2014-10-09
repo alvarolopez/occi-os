@@ -23,16 +23,16 @@ Test network resource backend.
 #pylint: disable=W0102,C0103,R0904,R0801
 
 import mox
-import unittest
 
 from occi import core_model, exceptions
 from occi.extensions import infrastructure
 
 from occi_os_api import nova_glue
 from occi_os_api.backends import storage
+from occi_os_api import test
 
 
-class TestStorageBackend(unittest.TestCase):
+class TestStorageBackend(test.TestCase):
     """
     Tests the storage backend!
     """
@@ -41,15 +41,9 @@ class TestStorageBackend(unittest.TestCase):
         """
         Setup the tests.
         """
+        super(TestStorageBackend, self).setUp()
         self.backend = storage.StorageBackend()
         self.sec_obj = {'nova_ctx': None}
-        self.mox = mox.Mox()
-
-    def tearDown(self):
-        """
-        Cleanup mocks.
-        """
-        self.mox.UnsetStubs()
 
     # Test for failure
 
@@ -231,7 +225,7 @@ class TestStorageBackend(unittest.TestCase):
         self.mox.VerifyAll()
 
 
-class TestStorageLinkBackend(unittest.TestCase):
+class TestStorageLinkBackend(test.TestCase):
     """
     Tests storage linking.
     """
@@ -240,15 +234,9 @@ class TestStorageLinkBackend(unittest.TestCase):
         """
         Setup the tests.
         """
+        super(TestStorageLinkBackend, self).setUp()
         self.backend = storage.StorageLinkBackend()
         self.sec_obj = {'nova_ctx': None}
-        self.mox = mox.Mox()
-
-    def tearDown(self):
-        """
-        Cleanup mocks.
-        """
-        self.mox.UnsetStubs()
 
     # Test for sanity
 
