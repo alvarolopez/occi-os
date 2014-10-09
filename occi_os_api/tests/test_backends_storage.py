@@ -137,7 +137,7 @@ class TestStorageBackend(unittest.TestCase):
                                       mox.IsA(object)).\
             AndReturn({'status': 'available',
                        'size': '1',
-                       'name': 'foobar'})
+                       'display_name': 'foobar'})
 
         self.mox.ReplayAll()
 
@@ -157,7 +157,7 @@ class TestStorageBackend(unittest.TestCase):
                                       mox.IsA(object)).\
             AndReturn({'status': 'unavailable',
                        'size': '1',
-                       'name': 'foobar'})
+                       'display_name': 'foobar'})
 
         self.mox.ReplayAll()
 
